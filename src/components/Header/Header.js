@@ -1,6 +1,31 @@
 import React, { Component } from 'react';
+import { Dropdown, DropdownMenu, DropdownItem } from 'reactstrap';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { setToken } from '../../actions';
 
 class Header extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false
+    };
+
+    this.logout = this.logout.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+
+  logout() {
+    this.props.logout();
+  }
 
   sidebarToggle(e) {
     e.preventDefault();
@@ -25,11 +50,20 @@ class Header extends Component {
   render() {
     return (
       <header className="app-header navbar">
-        <button className="navbar-toggler mobile-sidebar-toggler d-lg-none" onClick={this.mobileSidebarToggle} type="button">&#9776;</button>
-        <a className="navbar-brand" href="#"></a>
-        <ul className="nav navbar-nav d-md-down-none mr-auto">
+        <button className="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button" onClick={this.mobileSidebarToggle}>&#9776;</button>
+        <Link to={'/'} className="navbar-brand"></Link>
+        <ul className="nav navbar-nav ml-auto">
           <li className="nav-item">
-            <button className="nav-link navbar-toggler sidebar-toggler" type="button" onClick={this.sidebarToggle}>&#9776;</button>
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+              <button onClick={this.toggle} className="nav-link dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded={this.state.dropdownOpen}>
+                <img src={'/img/avatars/6.jpg'} className="img-avatar" alt=""/>
+                <span className="d-md-down-none">{this.props.user}</span>
+              </button>
+
+              <DropdownMenu className="dropdown-menu-right">
+                <DropdownItem onClick={this.logout}><i className="fa fa-lock"></i> Logout</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </li>
         </ul>
       </header>
@@ -37,4 +71,12 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+  user: state.user.name
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => { dispatch(setToken('')); }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

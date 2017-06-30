@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Header from '../../components/Header/';
 import Sidebar from '../../components/Sidebar/';
 import Breadcrumb from '../../components/Breadcrumb/';
@@ -7,9 +7,9 @@ import Aside from '../../components/Aside/';
 import Footer from '../../components/Footer/';
 
 import Dashboard from '../../views/Dashboard/'
-import Todos from '../../views/Todos/'
+import Posts from '../../views/Posts/'
 
-class Full extends Component {
+class Page extends Component {
   render() {
     return (
       <div className="app">
@@ -21,7 +21,7 @@ class Full extends Component {
             <div className="container-fluid">
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
-                <Route path="/todos" name="Todos" component={Todos}/>
+                <Route path="/posts" name="Posts" component={Posts}/>
                 <Redirect from="/" to="/dashboard"/>
               </Switch>
             </div>
@@ -34,4 +34,4 @@ class Full extends Component {
   }
 }
 
-export default Full;
+export default Page;

@@ -3,19 +3,6 @@ import { NavLink } from 'react-router-dom'
 
 class Sidebar extends Component {
 
-  handleClick(e) {
-    e.preventDefault();
-    e.target.parentElement.classList.toggle('open');
-  }
-
-  activeRoute(routeName) {
-    return this.props.location.pathname.indexOf(routeName) > -1 ? 'nav-item nav-dropdown open' : 'nav-item nav-dropdown';
-  }
-
-  // secondLevelActive(routeName) {
-  //   return this.props.location.pathname.indexOf(routeName) > -1 ? "nav nav-second-level collapse in" : "nav nav-second-level collapse";
-  // }
-
   render() {
     return (
       <div className="sidebar">
@@ -23,7 +10,7 @@ class Sidebar extends Component {
           <ul className="nav">
             <li className="nav-item">
               <NavLink to={'/dashboard'} className="nav-link" activeClassName="active"><i className="icon-speedometer"></i> Dashboard </NavLink>
-              <NavLink to={'/todos'} className="nav-link" activeClassName="active"><i className="fa fa-list"></i> Todos </NavLink>
+              <NavLink to={'/posts'} className="nav-link" activeClassName="active"><i className="icon-speech"></i> Posts </NavLink>
             </li>
           </ul>
         </nav>
