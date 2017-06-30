@@ -70,9 +70,9 @@ export const newPost = (post) => ({
   post
 });
 
-export const deletePost = (id) => ({
+export const deletePost = (post) => ({
   type: DELETE_POST,
-  id
+  id: post._id
 });
 
 export const editPost = (post) => ({

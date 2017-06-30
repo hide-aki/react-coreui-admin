@@ -108,7 +108,7 @@ function* deleteApi() {
     if (res.status) {
       yield put(actions.setApiStatus('failed'))
     } else {
-      yield put(saveAction(res.id))
+      yield put(saveAction(res))
       yield put(actions.setApiStatus('success'))
     }
   }
