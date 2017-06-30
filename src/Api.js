@@ -1,8 +1,8 @@
 import 'whatwg-fetch'
 
-const API_URL = 'https://floating-eyrie-61270.herokuapp.com/api'
-const AUTH_URL = 'https://floating-eyrie-61270.herokuapp.com/authenticate'
-const REGISTER_URL = 'https://floating-eyrie-61270.herokuapp.com/register'
+const API_URL = '/api'
+const AUTH_URL = '/api/authenticate'
+const REGISTER_URL = '/api/register'
 
 const handleResponse = response => { 
   if (response.status >= 200 && response.status < 400) {

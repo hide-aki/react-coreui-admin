@@ -8,5 +8,10 @@
   },
   "routes": {
     "/**": "index.html"
+  },
+  "proxies": {
+    "/api/": {
+      "origin": "${NODEDEMO_API_URL}"
+    }
   }
 }
