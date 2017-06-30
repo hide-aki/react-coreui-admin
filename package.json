@@ -33,5 +33,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "https://floating-eyrie-61270.herokuapp.com/"
 }
